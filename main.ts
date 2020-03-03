@@ -5,6 +5,10 @@ import {localidadesRouter} from './models/localidades/localidades.router'
 
 const server = new Server()
 
+/**
+ * @description Responsible for passing the information from the routers that will
+ * be made available to the method that will start the execution of the API.
+*/
 server.bootstrap([
     planosRouter,
     produtosRouter,
@@ -16,8 +20,3 @@ server.bootstrap([
     console.error(error)
     process.exit(1)
 })
-
-
-
-
-

@@ -1,6 +1,9 @@
 import mongoose from 'mongoose'
 import {Localidade} from '../localidades/localidades.model'
 
+/**
+ * @description Interface that establishes the Plano document structure.
+*/
 export interface Plano extends mongoose.Document {
     origem: Localidade,
     destino: Localidade,

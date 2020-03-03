@@ -1,5 +1,8 @@
 import mongoose from 'mongoose'
 
+/**
+ * @description Interface that establishes the Produto document structure.
+*/
 export interface Produto extends mongoose.Document {
     descricao: string,
     minutos: number,

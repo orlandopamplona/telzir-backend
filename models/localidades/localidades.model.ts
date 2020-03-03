@@ -1,5 +1,8 @@
 import mongoose from 'mongoose'
 
+/**
+ * @description Interface that establishes the Localidade document structure.
+*/
 export interface Localidade extends mongoose.Document {
     ddd: string
 }

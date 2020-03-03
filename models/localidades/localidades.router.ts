@@ -5,14 +5,21 @@ import { ModelRouter } from '../../common/model-router'
 import { Localidade } from './localidades.model'
 import { Plano } from '../../models/planos/planos.model'
 
-
-
+/**
+ * @description Implements the routes for the Localidade document.
+*/
 class LocalidadesRouter extends ModelRouter<Localidade> {
 
     constructor() {
         super(Localidade)
     }
 
+    /**
+    * @param {restify.Request} req Method request, receives the corresponding input.
+    * @param {restify.Response} resp Method response, returns the corresponding output.
+    * @param {restify.Next} next Used as notifier of the termination of the method execution.
+    * @description Searches for locations related to a particular location of origin.
+    */
     findByOrigem = (req: restify.Request, resp: restify.Response, next: restify.Next) => {
         Plano.find({ origem: req.params.id }, {
             "_id": 0,
@@ -33,6 +40,9 @@ class LocalidadesRouter extends ModelRouter<Localidade> {
         }).catch(next)
     }
 
+    /**
+     * @description List of routes available for the document.
+     */
     applyRoutes(application: restify.Server) {
         application.get('/localidades', this.findAll)
         application.get('/localidades/:id', [this.validateId, this.findById])

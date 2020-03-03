@@ -378,9 +378,10 @@ Conforme destacado em vermelho, temos o campo _id, o qual apresenta a chave de r
 Siga o seguinte gabarito para realizar as inserções:
 
 Considerando que a collection 'localidades tenha o seguinte resultado':
+
 ```shell
 {
-"_id": "5e56d546bbb50425806e7de4",
+ "_id": "5e56d546bbb50425806e7de4",
 "ddd": "011",
 "__v": 0
 },
@@ -400,7 +401,7 @@ Considerando que a collection 'localidades tenha o seguinte resultado':
 "__v": 0
 }
 ```
-Faça as substituições correspondentes e insira um a um os registros abaixo:
+Faça as substituições correspondentes e insira um a um os registros abaixo (por exemplo, na consulta, o ddd 011 tem o _id identificado por "5e56d546bbb50425806e7de4", você irá procurar abaixo todos os locais que tenham o id "5e56d546bbb50425806e7de4" e fazer a substituição pelo _id da consulta na sua base de dados e o mesmo para todos os demais _id das localidades):
 
 ```shell
 "origem": "5e56d546bbb50425806e7de4", "destino": "5e56d54bbbb50425806e7de5", "valor": "1.90"

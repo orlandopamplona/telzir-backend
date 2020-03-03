@@ -4,12 +4,21 @@ import { Produto } from './produtos.model'
 import { Plano } from '../planos/planos.model'
 import { NotFoundError } from 'restify-errors'
 
+/**
+ * @description Implements the routes for the Produto document.
+*/
 class ProdutoRouter extends ModelRouter<Produto> {
 
     constructor() {
         super(Produto)
     }
 
+    /**
+    * @param {restify.Request} req Method request, receives the corresponding input.
+    * @param {restify.Response} resp Method response, returns the corresponding output.
+    * @param {restify.Next} next Used as notifier of the termination of the method execution.
+    * @description Performs the simulation of values according to the parameters received.
+    */
     simular = (req: restify.Request, resp: restify.Response, next: restify.Next) => {
         const reqProduto = req.params.produto
         const reqDuracao = req.params.duracao
@@ -49,6 +58,9 @@ class ProdutoRouter extends ModelRouter<Produto> {
         return next()
     }
 
+    /**
+     * @description List of routes available for the document.
+     */
     applyRoutes(application: restify.Server) {
         application.get('/produtos', this.findAll)
         application.get('/produtos/:id', [this.validateId, this.findById])

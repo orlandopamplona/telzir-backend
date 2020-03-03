@@ -3,12 +3,21 @@ import * as restify from 'restify'
 import {Plano} from './planos.model'
 import {NotFoundError} from 'restify-errors'
 
+/**
+ * @description Implements the routes for the Plano document.
+*/
 class PlanosRouter extends ModelRouter<Plano> {
 
     constructor() {
         super(Plano)
     }
 
+    /**
+    * @param {restify.Request} req Method request, receives the corresponding input.
+    * @param {restify.Response} resp Method response, returns the corresponding output.
+    * @param {restify.Next} next Used as notifier of the termination of the method execution.
+    * @description Search plans according to the source and destination filter informed.
+    */
     findByOrigemDestino = (req: restify.Request, resp: restify.Response, next: restify.Next) => {
       Plano.find({ origem: req.params.origem, destino: req.params.destino })
          .populate('origem')
@@ -23,6 +32,9 @@ class PlanosRouter extends ModelRouter<Plano> {
          }).catch(next)
     }
 
+    /**
+     * @description List of routes available for the document.
+     */
     applyRoutes(application: restify.Server) {
         application.get('/planos', this.findAll)
         application.get('/planos/:id', [this.validateId, this.findById])
